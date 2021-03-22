@@ -5,7 +5,7 @@ import { format, add, parseISO} from "date-fns"
 import {getAllPosts} from "../lib/data";
 
 export default function Home({ posts }) {
-    //console.log("this",posts);
+    console.log("this",posts);
 
   return (
     <div>
@@ -32,7 +32,6 @@ function BlogList( { title, date, content, slug }) {
                 <a className="font-bold">{title}</a>
             </Link></div>
             <div className="text-red-300 text-sm">{format(parseISO(date), 'MMMM do uuu')}</div>
-            <div>{content}</div>
 
         </div>
     )
@@ -40,7 +39,6 @@ function BlogList( { title, date, content, slug }) {
 
 
 export async function getStaticProps(context) {
-    const { params } = context;
     const allPosts = getAllPosts();
     //const {data, content} = allPosts.find((item) => item.slug === params.slug);
     return {
