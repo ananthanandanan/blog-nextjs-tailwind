@@ -11,23 +11,27 @@ export default function Home() {
             <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main>
-            <h1>My blog</h1>
-
-        </main>
         <div>
             {blogPost.map((post) => (
-                <div key={post.slug}>
-                    <div><Link href={`/blog/${post.slug}`}>
-                        <a>{post.title}</a>
-                    </Link></div>
-                    <div>{post.date.toString()}</div>
-                    <div>{post.content}</div>
-
-                </div>
+                <BlogList key={post.slug} {...post}/>
             ))}
         </div>
 
     </div>
   )
+}
+
+function BlogList( { slug, title, date, content }) {
+
+    return (
+
+        <div>
+            <div><Link href={`/blog/${slug}`}>
+                <a>{title}</a>
+            </Link></div>
+            <div>{date}</div>
+            <div>{content}</div>
+
+        </div>
+    )
 }
